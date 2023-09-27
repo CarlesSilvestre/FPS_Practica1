@@ -22,6 +22,7 @@ public class FPSController : MonoBehaviour
     {
         m_Pitch = transform.rotation.x;
         m_Yaw = transform.rotation.y;
+        
     }
 
     // Update is called once per frame
