@@ -14,6 +14,9 @@ public class FPSController : MonoBehaviour
     public float m_mouseSensitivityY;
 
     public bool flag;
+
+    public float angleVisionY;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +30,15 @@ public class FPSController : MonoBehaviour
         float mousePositionX = Input.GetAxis("Mouse X");
         float mousePositionY = Input.GetAxis("Mouse Y");
 
+        if(Mathf.Abs(m_Yaw)< angleVisionY / 2 ||
+            (m_Yaw > angleVisionY / 2 && mousePositionY > 0)|| //eje invertido
+            m_Yaw < -angleVisionY / 2 && mousePositionY < 0) {
+            m_Yaw += flag ?
+                mousePositionY * Time.deltaTime * m_mouseSensitivityY * 1 :
+                mousePositionY * Time.deltaTime * m_mouseSensitivityY * -1;
+        }
         m_Pitch += mousePositionX * Time.deltaTime * m_mouseSensitivityX;
-        m_Yaw += flag? mousePositionY * Time.deltaTime * m_mouseSensitivityY * 1: mousePositionY * Time.deltaTime * m_mouseSensitivityY * -1;
-
+ 
         transform.rotation = Quaternion.Euler(0.0f, m_Pitch, 0.0f);
         m_PitchController.localRotation = Quaternion.Euler(m_Yaw, 0.0f, 0.0f);
     }

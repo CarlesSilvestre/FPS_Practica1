@@ -244,9 +244,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35de830fb28b38244a953102320725d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PitchController: {fileID: 0}
-  m_mouseSensitivityX: 0
-  m_mouseSensitivityY: 0
+  m_PitchController: {fileID: 1986539250}
+  m_mouseSensitivityX: 400
+  m_mouseSensitivityY: 400
+  flag: 0
+  angleVisionY: 60
 --- !u!1 &1198170219
 GameObject:
   m_ObjectHideFlags: 0
