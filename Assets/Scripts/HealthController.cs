@@ -8,8 +8,13 @@ public class HealthController : MonoBehaviour, IDamageable
     public float MaxHP;
     public float MaxShield;
 
+    [SerializeField]
     private float mHp;
+    [SerializeField]
     private float mShield;
+
+    public float MHp { get => mHp; set => mHp = value; }
+    public float MShield { get => mShield; set => mShield = value; }
 
     // Start is called before the first frame update
     void Start()

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3382404229018856262}
   - component: {fileID: 6103341329949929685}
   - component: {fileID: 7011544172910783922}
+  - component: {fileID: 3548344364877152582}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -158,7 +159,23 @@ MonoBehaviour:
   m_mouseSensitivityX: 400
   m_mouseSensitivityY: 400
   flag: 0
-  angleVisionY: 0
+  angleVisionY: 90
+--- !u!114 &3548344364877152582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169884736701286354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a94e9d413c2df468827ec58713f3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 5
+  MaxShield: 5
+  mHp: 0
+  mShield: 0
 --- !u!1 &5381063030809013294
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.5
   maxDistance: 100
+  maxAmmo: 5
+  ammoTxt: {fileID: 0}
 --- !u!1 &5832745906915908202
 GameObject:
   m_ObjectHideFlags: 0

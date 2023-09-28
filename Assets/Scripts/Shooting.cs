@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shooting : MonoBehaviour
 {
     public float fireRate = 0.0f;
     public float maxDistance = 0.0f;
     public int maxAmmo = 0;
+    public TextMeshProUGUI ammoTxt;
 
     private int ammo = 0;
     private float myTime = 0.0f;
@@ -15,6 +17,7 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         ammo = maxAmmo;
+        ammoTxt.text = $"{ammo}/{maxAmmo}";
     }
     // Update is called once per frame
     void Update()
@@ -30,6 +33,7 @@ public class Shooting : MonoBehaviour
         }
         if (Input.GetButton("Fire2"))
             ammo = maxAmmo;
+        ammoTxt.text = $"{ammo}/{maxAmmo}";
     }
 
     private void Shoot()
