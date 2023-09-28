@@ -6,16 +6,30 @@ public class Shooting : MonoBehaviour
 {
     public float fireRate = 0.0f;
     public float maxDistance = 0.0f;
-    private float myTime = 0.0f;
+    public int maxAmmo = 0;
 
+    private int ammo = 0;
+    private float myTime = 0.0f;
+    private float nextFire = 0.5F;
+
+    private void Start()
+    {
+        ammo = maxAmmo;
+    }
     // Update is called once per frame
     void Update()
     {
         myTime += Time.deltaTime;
-        if(Input.GetButton("Fire1") && myTime > fireRate)
+
+        if(ammo > 0 && myTime > nextFire && Input.GetButton("Fire1"))
         {
+            nextFire = myTime + fireRate;
             Shoot();
+            nextFire = nextFire - myTime;
+            myTime = 0f;
         }
+        if (Input.GetButton("Fire2"))
+            ammo = maxAmmo;
     }
 
     private void Shoot()
@@ -39,5 +53,8 @@ public class Shooting : MonoBehaviour
         {
             Debug.Log("No Hit");
         }
+
+        ammo--;
+        Debug.Log("Ammo: " + ammo);
     }
 }
