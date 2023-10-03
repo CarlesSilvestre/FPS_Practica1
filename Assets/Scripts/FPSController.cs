@@ -17,6 +17,12 @@ public class FPSController : MonoBehaviour
 
     public float angleVisionY;
 
+    public Rigidbody rb;
+
+    public float m_Speed;
+
+    public Vector2 movement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,5 +48,11 @@ public class FPSController : MonoBehaviour
  
         transform.rotation = Quaternion.Euler(0.0f, m_Pitch, 0.0f);
         m_PitchController.localRotation = Quaternion.Euler(m_Yaw, 0.0f, 0.0f);
+
+
+
+        movement = new Vector2(Input.GetAxis("Horizontal") * m_Speed, Input.GetAxis("Vertical") * m_Speed);
+        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.y);
+
     }
 }
