@@ -47,6 +47,9 @@ GameObject:
   - component: {fileID: 6103341329949929685}
   - component: {fileID: 7011544172910783922}
   - component: {fileID: 3548344364877152582}
+  - component: {fileID: 5131183840157212635}
+  - component: {fileID: 3155344117569202946}
+  - component: {fileID: 6078233434080295885}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -159,7 +162,10 @@ MonoBehaviour:
   m_mouseSensitivityX: 400
   m_mouseSensitivityY: 400
   flag: 0
-  angleVisionY: 90
+  angleVisionY: 60
+  rb: {fileID: 5131183840157212635}
+  m_Speed: 5
+  movement: {x: 0, y: 0}
 --- !u!114 &3548344364877152582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +182,61 @@ MonoBehaviour:
   MaxShield: 5
   mHp: 0
   mShield: 0
+--- !u!54 &5131183840157212635
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169884736701286354}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3155344117569202946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169884736701286354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35530cd53de85c418a23d5a7d40ce1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6078233434080295885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169884736701286354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9332ffd51d6114283c56be9951e8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.5
+  maxDistance: 100
+  maxAmmo: 5
+  ammoTxt: {fileID: 0}
 --- !u!1 &5381063030809013294
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +249,6 @@ GameObject:
   - component: {fileID: 335641267483351443}
   - component: {fileID: 9210190893548868022}
   - component: {fileID: 3212356248573448957}
-  - component: {fileID: 8521723674716604631}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -282,22 +342,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8521723674716604631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5381063030809013294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a9332ffd51d6114283c56be9951e8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 0.5
-  maxDistance: 100
-  maxAmmo: 5
-  ammoTxt: {fileID: 0}
 --- !u!1 &5832745906915908202
 GameObject:
   m_ObjectHideFlags: 0
