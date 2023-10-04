@@ -22,7 +22,11 @@ public class HealthController : MonoBehaviour, IDamageable
         mHp = MaxHP;
         mShield = MaxShield;
     }
-
+    private void Update()
+    {
+        if (mHp > MaxHP) mHp = MaxHP;
+        if (mShield > MaxShield) mShield = MaxShield;
+    }
     public void TakeDamage(float amount)
     {
         // If shield can take 75% of the damage

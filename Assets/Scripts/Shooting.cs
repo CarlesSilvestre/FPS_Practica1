@@ -14,6 +14,8 @@ public class Shooting : MonoBehaviour
     private float myTime = 0.0f;
     private float nextFire = 0.5F;
 
+    public int Ammo { get => ammo; set => ammo = value; }
+
     private void Start()
     {
         ammo = maxAmmo;
@@ -22,6 +24,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ammo > maxAmmo) ammo = maxAmmo;
         myTime += Time.deltaTime;
 
         if(ammo > 0 && myTime > nextFire && Input.GetButton("Fire1"))
