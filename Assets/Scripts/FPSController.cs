@@ -26,9 +26,9 @@ public class FPSController : MonoBehaviour
 
     public float speed;
     public CharacterController cc;
-    public Vector2 frontVector;
-    public Vector2 rightVector;
-    public Vector2 movement;
+    public Vector3 frontVector;
+    public Vector3 rightVector;
+    public Vector3 movement;
 
     // Start is called before the first frame update
     void Start()
@@ -56,15 +56,13 @@ public class FPSController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, m_yaw, 0.0f);
         m_PitchController.localRotation = Quaternion.Euler(m_pitch, 0.0f, 0.0f);
 
-        frontVector = Vector2.zero;
-        rightVector = Vector2.zero;
-
-        frontVector = frontVector * Input.GetAxis("Vertical")*-1;
+        frontVector = transform.forward;
+        rightVector = transform.right;
+        
+        frontVector = frontVector * Input.GetAxis("Vertical");
         rightVector = rightVector * Input.GetAxis("Horizontal");
 
         movement = frontVector + rightVector;
-
-        Vector2 endMovement = movement * speed * Time.deltaTime;
-        cc.Move(new Vector3(endMovement.x,0,endMovement.y));
+        cc.Move(movement * speed * Time.deltaTime);
     }
 }
