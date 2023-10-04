@@ -5,8 +5,8 @@ using UnityEngine;
 public class FPSController : MonoBehaviour
 {
 
-    float m_Pitch;
-    float m_Yaw;
+    float m_yaw;
+    float m_pitch;
 
     public Transform m_PitchController;
 
@@ -17,18 +17,25 @@ public class FPSController : MonoBehaviour
 
     public float angleVisionY;
 
-    public Rigidbody rb;
+    public KeyCode front;
+    public KeyCode back;
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode jump;
+    public KeyCode run;
 
-    public float m_Speed;
-
+    public float speed;
+    public CharacterController cc;
+    public Vector2 frontVector;
+    public Vector2 rightVector;
     public Vector2 movement;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Pitch = transform.rotation.x;
-        m_Yaw = transform.rotation.y;
-        
+        m_yaw = transform.rotation.x;
+        m_pitch = transform.rotation.y;
+        cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -37,22 +44,27 @@ public class FPSController : MonoBehaviour
         float mousePositionX = Input.GetAxis("Mouse X");
         float mousePositionY = Input.GetAxis("Mouse Y");
 
-        if(Mathf.Abs(m_Yaw)< angleVisionY / 2 ||
-            (m_Yaw > angleVisionY / 2 && mousePositionY > 0)|| //eje invertido
-            m_Yaw < -angleVisionY / 2 && mousePositionY < 0) {
-            m_Yaw += flag ?
+        if(Mathf.Abs(m_pitch)< angleVisionY / 2 ||
+            (m_pitch > angleVisionY / 2 && mousePositionY > 0)|| //eje invertido
+            m_pitch < -angleVisionY / 2 && mousePositionY < 0) {
+            m_pitch += flag ?
                 mousePositionY * Time.deltaTime * m_mouseSensitivityY * 1 :
                 mousePositionY * Time.deltaTime * m_mouseSensitivityY * -1;
         }
-        m_Pitch += mousePositionX * Time.deltaTime * m_mouseSensitivityX;
+        m_yaw += mousePositionX * Time.deltaTime * m_mouseSensitivityX;
  
-        transform.rotation = Quaternion.Euler(0.0f, m_Pitch, 0.0f);
-        m_PitchController.localRotation = Quaternion.Euler(m_Yaw, 0.0f, 0.0f);
+        transform.rotation = Quaternion.Euler(0.0f, m_yaw, 0.0f);
+        m_PitchController.localRotation = Quaternion.Euler(m_pitch, 0.0f, 0.0f);
 
+        frontVector = Vector2.zero;
+        rightVector = Vector2.zero;
 
+        frontVector = frontVector * Input.GetAxis("Vertical")*-1;
+        rightVector = rightVector * Input.GetAxis("Horizontal");
 
-        movement = new Vector2(Input.GetAxis("Horizontal") * m_Speed, Input.GetAxis("Vertical") * m_Speed);
-        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.y);
+        movement = frontVector + rightVector;
 
+        Vector2 endMovement = movement * speed * Time.deltaTime;
+        cc.Move(new Vector3(endMovement.x,0,endMovement.y));
     }
 }
