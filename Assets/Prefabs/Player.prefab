@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5131183840157212635}
   - component: {fileID: 3155344117569202946}
   - component: {fileID: 6078233434080295885}
+  - component: {fileID: 1826204631998535316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -162,10 +163,19 @@ MonoBehaviour:
   m_mouseSensitivityX: 400
   m_mouseSensitivityY: 400
   flag: 0
-  angleVisionY: 60
-  rb: {fileID: 5131183840157212635}
-  m_Speed: 5
-  movement: {x: 0, y: 0}
+  m_angleVisionY: 60
+  jump: 32
+  m_jumpImpulse: 3
+  run: 304
+  m_incrementalSpeed: 1.5
+  m_sprinting: 0
+  m_speed: 15
+  m_cc: {fileID: 0}
+  m_front: {x: 0, y: 0, z: 0}
+  m_right: {x: 0, y: 0, z: 0}
+  m_movement: {x: 0, y: 0, z: 0}
+  m_verticalVelocity: 0
+  m_OnGrounded: 0
 --- !u!114 &3548344364877152582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +247,32 @@ MonoBehaviour:
   maxDistance: 100
   maxAmmo: 5
   ammoTxt: {fileID: 0}
+--- !u!143 &1826204631998535316
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169884736701286354}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5381063030809013294
 GameObject:
   m_ObjectHideFlags: 0
