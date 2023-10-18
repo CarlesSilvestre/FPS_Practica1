@@ -47,6 +47,7 @@ public class FPSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         float mousePositionX = Input.GetAxis("Mouse X");
         float mousePositionY = Input.GetAxis("Mouse Y");
 
