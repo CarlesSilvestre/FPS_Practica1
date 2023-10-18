@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+public enum State
+{
+    Idle, Patroling, Alert, Chase, Dead, Attack,
+}
 public class FSM : MonoBehaviour
 {
     protected virtual void Initialize() { }
@@ -24,11 +29,15 @@ public class FSM : MonoBehaviour
 }
 public abstract class FSMState : MonoBehaviour
 {
-    public string State;
+    protected State state;
     public bool Done;
-    public bool Auxiliar;
+    protected State nextState;
     protected NavMeshAgent agent;
     protected Transform playerTransform;
+
+    public State State { get => state; set => state = value; }
+    public State NextState { get => nextState; set => nextState = value; }
+
     private void Start()
     {
         Initialize();

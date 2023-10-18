@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Chase : FSMState
 {
-    public float chaseSpeed;
     public float minDistance;
     public float maxDistance;
     private void OnDrawGizmos()
@@ -21,7 +20,7 @@ public class Chase : FSMState
     protected override void Initialize()
     {
         base.Initialize();
-
+        state = State.Chase;
     }
 
     public override void UpdateState()
@@ -32,19 +31,18 @@ public class Chase : FSMState
 
     private void ChasePlayer()
     {
-        agent.speed = chaseSpeed;
         float playerDistance = Vector3.Distance(playerTransform.position, transform.position);
         agent.destination = playerTransform.position;
         if (playerDistance <= minDistance)
         {
             agent.isStopped = true;
             Done = true;
-            Auxiliar = true;
+            nextState = State.Attack;
         }
         else if(playerDistance >= maxDistance)
         {
             Done = true;
-            Auxiliar = false;
+            nextState = State.Patroling;
         }
     }
 }

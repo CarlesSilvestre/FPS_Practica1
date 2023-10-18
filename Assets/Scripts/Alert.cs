@@ -24,6 +24,7 @@ public class Alert : FSMState
     protected override void Initialize()
     {
         base.Initialize();
+        state = State.Alert;
     }
 
     public override void UpdateState()
@@ -36,7 +37,8 @@ public class Alert : FSMState
         }
         else
         {
-            Auxiliar = false;
+            agent.isStopped = false;
+            nextState = State.Patroling;
             Done = true;
             totalRotation = 0f;
         }
@@ -53,9 +55,10 @@ public class Alert : FSMState
 
         if (angleToPlayer <= Mathf.Abs(maxFieldOfView))
         {
-            Auxiliar = true;
+            nextState = State.Chase;
             Done = true;
             totalRotation = 0f;
+            agent.isStopped = false;
         }
     }
 }

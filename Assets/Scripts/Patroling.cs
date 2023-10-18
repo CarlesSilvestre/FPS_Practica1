@@ -16,6 +16,7 @@ public class Patroling : FSMState
     {
         base.Initialize();
         currentDestination = Vector3.zero;
+        state = State.Patroling;
     }
 
     public override void UpdateState()
@@ -42,5 +43,12 @@ public class Patroling : FSMState
         Vector3 randomOffset = new Vector3(UnityEngine.Random.Range(-thresholdDistance, thresholdDistance), 0f, UnityEngine.Random.Range(-thresholdDistance, thresholdDistance));
         return new Vector3(waypoint.x + randomOffset.x, waypoint.y, waypoint.z + randomOffset.z);
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Done = true;
+            nextState = State.Alert;
+        }
+    }
 }
