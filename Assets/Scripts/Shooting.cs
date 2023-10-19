@@ -6,6 +6,7 @@ using TMPro;
 public class Shooting : MonoBehaviour
 {
     public Camera camera;
+    public GameObject decal;
     public float damage = 0.0f;
     public float fireRate = 0.0f;
     public float maxDistance = 0.0f;
@@ -46,6 +47,7 @@ public class Shooting : MonoBehaviour
         // Perform the raycast
         if (Physics.Raycast(ray, out hit, maxDistance))
         {
+            Instantiate(decal, hit.point + (hit.normal * 0.01f), Quaternion.LookRotation(hit.normal), hit.collider.gameObject.transform);
             IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
             // Hit object
             if(damageable != null)

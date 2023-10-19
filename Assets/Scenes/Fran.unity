@@ -601,6 +601,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3554595941393190643, guid: bc8c66f09adfb8c468e13ff87af2be85, type: 3}
   m_PrefabInstance: {fileID: 310631202}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &787042961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5072661761069395477, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_Name
+      value: Decal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.149
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678827019680888697, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
 --- !u!1001 &878703168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1077,6 +1134,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: decal
+      value: 
+      objectReference: {fileID: 5072661761069395477, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
       propertyPath: ammoTxt
       value: 
       objectReference: {fileID: 1676204613}
@@ -1084,6 +1145,26 @@ PrefabInstance:
       propertyPath: shootPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: decals.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: decals.Array.data[0]
+      value: 
+      objectReference: {fileID: 5072661761069395477, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: decals.Array.data[1]
+      value: 
+      objectReference: {fileID: 8892459382423532157, guid: d4603aee009531a4eab2a8e6a3dc7584, type: 3}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: decals.Array.data[2]
+      value: 
+      objectReference: {fileID: 352828652418628323, guid: 1e104e354882acf4e894567f74d3400c, type: 3}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: decals.Array.data[3]
+      value: 
+      objectReference: {fileID: 2940267251569880983, guid: d9993171731819841bb483f41ea2d4f3, type: 3}
     - target: {fileID: 7011544172910783922, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
       propertyPath: back
       value: 115
@@ -1276,3 +1357,4 @@ SceneRoots:
   - {fileID: 878703168}
   - {fileID: 718737444}
   - {fileID: 1925439190}
+  - {fileID: 787042961}
