@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HP_Bar : MonoBehaviour
 {
@@ -23,5 +24,10 @@ public class HP_Bar : MonoBehaviour
     {
         hpImage.fillAmount = HealthController.MHp / maxHp;
         shieldImage.fillAmount = HealthController.MShield / maxShield;
+    }
+    public void Resume()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour, IDamageable
 {
+    public GameObject deadScreen;
     public float MaxHP;
     public float MaxShield;
 
@@ -19,6 +21,7 @@ public class HealthController : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        deadScreen.SetActive(false);
         mHp = MaxHP;
         mShield = MaxShield;
     }
@@ -48,6 +51,9 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("DIED");
+        deadScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Destroy(GetComponent<Shooting>());
+        Destroy(GetComponent<FPSController>());
     }
 }
