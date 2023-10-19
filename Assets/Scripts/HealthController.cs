@@ -27,7 +27,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (mHp > MaxHP) mHp = MaxHP;
         if (mShield > MaxShield) mShield = MaxShield;
     }
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Vector3 hitPoint)
     {
         // If shield can take 75% of the damage
         if(mShield > amount * 0.75f)
@@ -46,9 +46,8 @@ public class HealthController : MonoBehaviour, IDamageable
             Die();
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("DIED");
     }
-
 }

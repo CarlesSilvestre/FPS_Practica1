@@ -5,6 +5,8 @@ using TMPro;
 
 public class Shooting : MonoBehaviour
 {
+    public Camera camera;
+    public float damage = 0.0f;
     public float fireRate = 0.0f;
     public float maxDistance = 0.0f;
     public int maxAmmo = 0;
@@ -22,7 +24,7 @@ public class Shooting : MonoBehaviour
         ammoTxt.text = $"{ammo}/{maxAmmo}";
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (ammo > maxAmmo) ammo = maxAmmo;
         myTime += Time.deltaTime;
@@ -34,34 +36,28 @@ public class Shooting : MonoBehaviour
             nextFire = nextFire - myTime;
             myTime = 0f;
         }
-        if (Input.GetButton("Fire2"))
-            ammo = maxAmmo;
         ammoTxt.text = $"{ammo}/{maxAmmo}";
     }
-
     private void Shoot()
     {
-        // Camera position and direction
-        Vector3 rayOrigin = transform.position;
-        Vector3 rayDirection = transform.forward;
-
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
 
         // Perform the raycast
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit, maxDistance))
+        if (Physics.Raycast(ray, out hit, maxDistance))
         {
+            IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
             // Hit object
-            Debug.Log("Hit " + hit.collider.gameObject.name);
-            Debug.Log("Hit Point: " + hit.point);
-            Debug.Log("Hit Normal: " + hit.normal);
+            if(damageable != null)
+            {
+                damageable.TakeDamage(damage, hit.point);
+            }
 
         }
         else
         {
-            Debug.Log("No Hit");
         }
 
         ammo--;
-        Debug.Log("Ammo: " + ammo);
     }
 }

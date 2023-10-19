@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Attack : FSMState
 {
+    public Transform firePoint;
+    public float damage = 0.0f;
     public float shootMax;
     public float fireRate;
     private float myTime = 0.0f;
@@ -32,7 +34,6 @@ public class Attack : FSMState
         agent.destination = playerTransform.position;
         if (playerDistance >= shootMax)
         {
-            agent.isStopped = false;
             Done = true;
             nextState = State.Chase;
             StopAllCoroutines();
@@ -41,7 +42,7 @@ public class Attack : FSMState
 
     private void Shoot()
     {
-        Vector3 rayOrigin = transform.position;
+        Vector3 rayOrigin = firePoint.position;
         Vector3 rayDirection = playerTransform.position - rayOrigin;
 
         RaycastHit hit;
@@ -49,13 +50,15 @@ public class Attack : FSMState
         // Perform the raycast
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, shootMax))
         {
+            IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
             // Hit object
-            Debug.Log("Hit " + hit.collider.gameObject.name);
-
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage, hit.point);
+            }
         }
         else
         {
-            Debug.Log("No Hit");
         }
     }
 

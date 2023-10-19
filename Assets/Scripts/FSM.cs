@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public enum State
 {
-    Idle, Patroling, Alert, Chase, Dead, Attack,
+    Idle, Patroling, Alert, Chase, Dead, Attack, Hit,
 }
 public class FSM : MonoBehaviour
 {

@@ -12,6 +12,14 @@ public class Patroling : FSMState
     private float thresholdDistance;
 
     private Vector3 currentDestination;
+    private void OnDrawGizmos()
+    {
+        Vector3 position = transform.position;
+
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawWireSphere(position, thresholdDistance);
+    }
     protected override void Initialize()
     {
         base.Initialize();
@@ -23,10 +31,22 @@ public class Patroling : FSMState
     {
         base.UpdateState();
         Patrol();
+        CheckDisturbed();
+    }
+
+    private void CheckDisturbed()
+    {
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        if (distance <= thresholdDistance)
+        {
+            Done = true;
+            nextState = State.Alert;
+        }
     }
 
     private void Patrol()
     {
+        agent.isStopped = false;
         if (currentDestination == Vector3.zero || agent.remainingDistance <= agent.stoppingDistance)
         {
             currentDestination = NewPoint();
@@ -42,13 +62,5 @@ public class Patroling : FSMState
         Vector3 waypoint = WayPoints[randomIndex].position;
         Vector3 randomOffset = new Vector3(UnityEngine.Random.Range(-thresholdDistance, thresholdDistance), 0f, UnityEngine.Random.Range(-thresholdDistance, thresholdDistance));
         return new Vector3(waypoint.x + randomOffset.x, waypoint.y, waypoint.z + randomOffset.z);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Done = true;
-            nextState = State.Alert;
-        }
     }
 }

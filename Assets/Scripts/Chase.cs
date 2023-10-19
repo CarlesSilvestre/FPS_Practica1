@@ -31,6 +31,7 @@ public class Chase : FSMState
 
     private void ChasePlayer()
     {
+        agent.isStopped = false;
         float playerDistance = Vector3.Distance(playerTransform.position, transform.position);
         agent.destination = playerTransform.position;
         if (playerDistance <= minDistance)

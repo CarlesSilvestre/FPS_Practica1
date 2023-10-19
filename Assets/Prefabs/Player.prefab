@@ -339,8 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PitchController: {fileID: 6662520300311745512}
-  m_mouseSensitivityX: 400
-  m_mouseSensitivityY: 400
+  m_mouseSensitivityX: 75
+  m_mouseSensitivityY: 50
   flag: 0
   m_angleVisionY: 60
   jump: 32
@@ -423,9 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9332ffd51d6114283c56be9951e8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 4795417863324166226}
+  damage: 2
   fireRate: 0.5
   maxDistance: 100
-  maxAmmo: 5
+  maxAmmo: 500
   ammoTxt: {fileID: 0}
 --- !u!143 &1826204631998535316
 CharacterController:

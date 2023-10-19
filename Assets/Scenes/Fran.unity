@@ -1143,6 +1143,10 @@ PrefabInstance:
       propertyPath: ammoTxt
       value: 
       objectReference: {fileID: 1676204613}
+    - target: {fileID: 6078233434080295885, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7011544172910783922, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
       propertyPath: back
       value: 115
@@ -1177,7 +1181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9033372533404485928, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.615
       objectReference: {fileID: 0}
     - target: {fileID: 9033372533404485928, guid: b8e4c72fd1935224ab567bca525c9ee0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1283,6 +1287,14 @@ PrefabInstance:
     - target: {fileID: 6155977437747444364, guid: 8d6c7d87f0c432947ab11651a943be7b, type: 3}
       propertyPath: m_Name
       value: Octopus
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046771607715539275, guid: 8d6c7d87f0c432947ab11651a943be7b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046771607715539275, guid: 8d6c7d87f0c432947ab11651a943be7b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.372
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
