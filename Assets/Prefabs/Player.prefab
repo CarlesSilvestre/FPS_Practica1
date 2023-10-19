@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 4795417863324166226}
+  decal: {fileID: 5072661761069395477, guid: 29d167a4835d90e46a71ff5d3e9719fd, type: 3}
   damage: 2
   fireRate: 0.5
   maxDistance: 100
