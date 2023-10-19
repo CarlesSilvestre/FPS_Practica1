@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Octopus : FSM, IDamageable
 {
     public float maxHP;
+    public Image lifeBar;
     [SerializeField]
     [Header("FSM")] //Current state that the NPC is reaching
     public List<FSMState> states;
@@ -26,6 +27,7 @@ public class Octopus : FSM, IDamageable
             Die();
         CheckState();
         m_State.UpdateState();
+        UpdateLifeBar();
     }
 
     private void CheckState()
@@ -61,5 +63,10 @@ public class Octopus : FSM, IDamageable
     public void Die()
     {
         m_State.NextState = State.Dead;
+    }
+    private void UpdateLifeBar()
+    {
+        lifeBar.fillAmount = mHp / maxHP;
+        
     }
 }
