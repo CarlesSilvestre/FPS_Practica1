@@ -56,19 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-<<<<<<< Updated upstream
-        m_Texture: {fileID: 2800000, guid: cf4681572fdf2a54e98ff0af1c186341, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 9fdf19b41e08b8c4fb8d4a81c87fc395, type: 3}
-=======
         m_Texture: {fileID: 2800000, guid: 9fdf19b41e08b8c4fb8d4a81c87fc395, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 2800000, guid: cf4681572fdf2a54e98ff0af1c186341, type: 3}
->>>>>>> Stashed changes
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

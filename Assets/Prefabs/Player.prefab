@@ -1438,10 +1438,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5717590058530838014, guid: aac9254e89b57364783c5bc5209cfa5d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0855f844efbd9da41872905bca4e44ab, type: 2}
     - target: {fileID: 8938515580385605268, guid: aac9254e89b57364783c5bc5209cfa5d, type: 3}
       propertyPath: m_Name
       value: WaterGun
