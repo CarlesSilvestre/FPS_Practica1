@@ -22,7 +22,7 @@ public class VerticalPlatform : MonoBehaviour
     void Update()
     {
         if(transform.position != targetPos)
-            transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {

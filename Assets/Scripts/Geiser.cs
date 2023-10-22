@@ -7,7 +7,7 @@ public class Geiser: MonoBehaviour
     FPSController player;
     private void OnTriggerEnter(Collider other)
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
-        player.m_verticalVelocity = 4;
+        if(other.gameObject.tag == "Player")
+            player.m_verticalVelocity = 4;
     }
 }
