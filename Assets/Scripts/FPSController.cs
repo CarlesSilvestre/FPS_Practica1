@@ -31,9 +31,11 @@ public class FPSController : MonoBehaviour
     private Vector3 m_right;
     private Vector3 m_movement;
 
-    private float m_verticalVelocity;
+    public float m_verticalVelocity;
     private bool m_OnGrounded;
-    private const float m_gravity = -9.8f;
+    private const float m_waterGravity = -2f;
+    private const float m_surfaceGravity = -9.8f;
+    public bool m_underWater;
 
     // Start is called before the first frame update
     void Start()
@@ -45,14 +47,21 @@ public class FPSController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         InputRotation();
         InputMovement();
 
         if (Input.GetKeyDown(jump))
         {
-            m_verticalVelocity = m_jumpImpulse;
+            if (m_underWater)
+            {
+                m_verticalVelocity = m_jumpImpulse/3;
+            }
+            else
+            {
+                m_verticalVelocity = m_jumpImpulse;
+            }
         }
         if (Input.GetKeyDown(run))
         {
@@ -72,7 +81,14 @@ public class FPSController : MonoBehaviour
         m_right = transform.right * Input.GetAxis("Horizontal");
 
         m_movement = m_front + m_right;
-        m_verticalVelocity += m_OnGrounded ? 0 : m_gravity * Time.deltaTime;
+        if (m_underWater)
+        {
+            m_verticalVelocity += m_OnGrounded ? 0 : m_waterGravity * Time.deltaTime;
+        }
+        else
+        {
+            m_verticalVelocity += m_OnGrounded ? 0 : m_waterGravity * Time.deltaTime;
+        }
         m_movement.y = m_verticalVelocity;
         float m_multiplier = m_sprinting ? m_incrementalSpeed : 1;
         CollisionFlags collision = m_cc.Move(m_movement * m_speed * m_multiplier * Time.deltaTime);
