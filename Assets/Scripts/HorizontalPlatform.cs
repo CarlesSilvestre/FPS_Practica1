@@ -19,7 +19,6 @@ public class HorizontalPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nextPoint);
         if (transform.position != wayPoints[nextPoint].position)
         {
             transform.position = Vector3.MoveTowards(transform.position, wayPoints[nextPoint].position, speed * Time.deltaTime);
