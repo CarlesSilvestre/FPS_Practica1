@@ -36,7 +36,6 @@ public class Octopus : FSM, IDamageable
         {
             State previous = m_State.State;
             State next = m_State.NextState;
-            Debug.Log(previous + "----->" + next);
             m_State.Done = false;
             m_State = states.Find(state => state.State == next);
             if (next == State.Hit)
@@ -51,7 +50,6 @@ public class Octopus : FSM, IDamageable
     {
         if (head.bounds.Contains(hitPoint))
         {
-            Debug.Log("Headshot");
             mHp -= amount;
         }
         m_State.Done = true;

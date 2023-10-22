@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981914b01a7c97e458b976ebb478fd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
+  maxHP: 10
   lifeBar: {fileID: 5878810163815853000}
   states:
   - {fileID: 2688944497252869138}
@@ -977,7 +977,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  thresholdDistance: 10
+  thresholdDistance: 20
 --- !u!114 &971762732256142174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Done: 0
-  rotationSpeed: 60
+  rotationSpeed: 100
   maxFieldOfView: 45
 --- !u!114 &4867587893165839921
 MonoBehaviour:
@@ -1022,9 +1022,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Done: 0
   firePoint: {fileID: 8046771607715539275}
-  damage: 2
+  damage: 3
   shootMax: 8
-  fireRate: 0.8
+  fireRate: 0.2
 --- !u!65 &5391719500181204251
 BoxCollider:
   m_ObjectHideFlags: 0
