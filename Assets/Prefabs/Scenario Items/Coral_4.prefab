@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1531530299886118123}
   - component: {fileID: 2486084463278246548}
   - component: {fileID: 6789238910921252097}
+  - component: {fileID: 3371916307563013959}
   m_Layer: 0
   m_Name: Coral.003
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1498862666163399614, guid: 45bac7011dcd7224190f8f1d074f2d8a, type: 3}
+  - {fileID: 2100000, guid: ca97dd1ac7db0f74e980557ff6a40ed5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3371916307563013959
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986333040617066199}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7196079186728127361, guid: 45bac7011dcd7224190f8f1d074f2d8a, type: 3}
 --- !u!1 &6846628524103996654
 GameObject:
   m_ObjectHideFlags: 0
