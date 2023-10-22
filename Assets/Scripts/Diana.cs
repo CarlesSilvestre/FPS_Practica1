@@ -26,10 +26,10 @@ public class Diana : MonoBehaviour, IDamageable
     private IEnumerator DisableMe()
     {
         GetComponent<Collider>().enabled = false;
-        GetComponent<Renderer>().enabled = false;
+        GetComponentInChildren<Renderer>().enabled = false;
         yield return new WaitForSeconds(7f);
         GetComponent<Collider>().enabled = true;
-        GetComponent<Renderer>().enabled = true;
+        GetComponentInChildren<Renderer>().enabled = true;
     }
 
 
