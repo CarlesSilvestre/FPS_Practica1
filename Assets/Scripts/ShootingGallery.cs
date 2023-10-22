@@ -18,7 +18,7 @@ public class ShootingGallery : MonoBehaviour
 
     private void Update()
     {
-        player.GetComponent<FPSController>().enabled = true;
+        if(player != null) player.GetComponent<FPSController>().enabled = true;
         pointsTxt.text = $"{points} points";
         if (points >= goalPoints)
             Inactive();
