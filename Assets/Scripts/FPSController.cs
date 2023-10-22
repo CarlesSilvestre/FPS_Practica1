@@ -52,7 +52,7 @@ public class FPSController : MonoBehaviour
         InputRotation();
         InputMovement();
 
-        if (Input.GetKeyDown(jump))
+        if (Input.GetKeyDown(jump)&&m_OnGrounded)
         {
             if (m_underWater)
             {
