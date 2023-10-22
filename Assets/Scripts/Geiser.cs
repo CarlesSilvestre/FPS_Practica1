@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Geiser: MonoBehaviour
 {
+    FPSController player;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
-            other.GetComponent<FPSController>().m_verticalVelocity = 4;
+            player.m_verticalVelocity = 4;
     }
 }
