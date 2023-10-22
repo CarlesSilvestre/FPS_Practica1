@@ -5,6 +5,7 @@ using UnityEngine;
 public class FPSController : MonoBehaviour
 {
 
+    public float m_speed;
     float m_yaw;
     float m_pitch;
 
@@ -22,18 +23,17 @@ public class FPSController : MonoBehaviour
 
     public KeyCode run;
     public float m_incrementalSpeed;
-    public bool m_sprinting;
-    public Camera m_camera;
+    private bool m_sprinting;
+    private Camera m_camera;
 
-    public float m_speed;
-    public CharacterController m_cc;
-    public Vector3 m_front;
-    public Vector3 m_right;
-    public Vector3 m_movement;
+    private CharacterController m_cc;
+    private Vector3 m_front;
+    private Vector3 m_right;
+    private Vector3 m_movement;
 
-    public float m_verticalVelocity;
-    public bool m_OnGrounded;
-    public const float m_gravity = -9.8f;
+    private float m_verticalVelocity;
+    private bool m_OnGrounded;
+    private const float m_gravity = -9.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,24 +45,29 @@ public class FPSController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        float mousePositionX = Input.GetAxis("Mouse X");
-        float mousePositionY = Input.GetAxis("Mouse Y");
+        InputRotation();
+        InputMovement();
 
-        if(Mathf.Abs(m_pitch)< m_angleVisionY / 2 ||
-            (m_pitch > m_angleVisionY / 2 && mousePositionY > 0)|| //eje invertido
-            m_pitch < -m_angleVisionY / 2 && mousePositionY < 0) {
-            m_pitch += flag ?
-                mousePositionY * Time.deltaTime * m_mouseSensitivityY * 1 :
-                mousePositionY * Time.deltaTime * m_mouseSensitivityY * -1;
+        if (Input.GetKeyDown(jump))
+        {
+            m_verticalVelocity = m_jumpImpulse;
         }
-        m_yaw += mousePositionX * Time.deltaTime * m_mouseSensitivityX;
- 
-        transform.rotation = Quaternion.Euler(0.0f, m_yaw, 0.0f);
-        m_PitchController.localRotation = Quaternion.Euler(m_pitch, 0.0f, 0.0f);
+        if (Input.GetKeyDown(run))
+        {
+            m_sprinting = true;
+            m_camera.fieldOfView = 40.0f;
+        }
+        if (Input.GetKeyUp(run))
+        {
+            m_sprinting = false;
+            m_camera.fieldOfView = 60.0f;
+        }
+    }
 
+    private void InputMovement()
+    {
         m_front = transform.forward * Input.GetAxis("Vertical");
         m_right = transform.right * Input.GetAxis("Horizontal");
 
@@ -80,20 +85,25 @@ public class FPSController : MonoBehaviour
         {
             m_OnGrounded = false;
         }
+    }
 
-        if (Input.GetKeyDown(jump))
+    private void InputRotation()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        float mousePositionX = Input.GetAxis("Mouse X");
+        float mousePositionY = Input.GetAxis("Mouse Y");
+
+        if (Mathf.Abs(m_pitch) < m_angleVisionY / 2 ||
+            (m_pitch > m_angleVisionY / 2 && mousePositionY > 0) || //eje invertido
+            m_pitch < -m_angleVisionY / 2 && mousePositionY < 0)
         {
-            m_verticalVelocity = m_jumpImpulse;
+            m_pitch += flag ?
+                mousePositionY * Time.deltaTime * m_mouseSensitivityY * 1 :
+                mousePositionY * Time.deltaTime * m_mouseSensitivityY * -1;
         }
-        if (Input.GetKeyDown(run))
-        {
-            m_sprinting = true;
-            m_camera.fieldOfView = 40.0f;
-        }
-        if (Input.GetKeyUp(run))
-        {
-            m_sprinting = false;
-            m_camera.fieldOfView = 60.0f;
-        }
+        m_yaw += mousePositionX * Time.deltaTime * m_mouseSensitivityX;
+
+        transform.rotation = Quaternion.Euler(0.0f, m_yaw, 0.0f);
+        m_PitchController.localRotation = Quaternion.Euler(m_pitch, 0.0f, 0.0f);
     }
 }

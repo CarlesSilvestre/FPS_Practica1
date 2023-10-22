@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Shooting : MonoBehaviour
 {
+    public Animator anim;
     public Camera camera;
     public GameObject decal;
     public float damage = 0.0f;
     public float fireRate = 0.0f;
     public float maxDistance = 0.0f;
+    public int magazine = 0;
     public int maxAmmo = 0;
     public TextMeshProUGUI ammoTxt;
 
@@ -21,13 +24,13 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
-        ammo = maxAmmo;
-        ammoTxt.text = $"{ammo}/{maxAmmo}";
+        ammo = magazine;
+        ammoTxt.text = $"{ammo}/{magazine} | {maxAmmo}";
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (ammo > maxAmmo) ammo = maxAmmo;
+        if (ammo > magazine) ammo = magazine;
         myTime += Time.deltaTime;
 
         if(ammo > 0 && myTime > nextFire && Input.GetButton("Fire1"))
@@ -37,8 +40,19 @@ public class Shooting : MonoBehaviour
             nextFire = nextFire - myTime;
             myTime = 0f;
         }
-        ammoTxt.text = $"{ammo}/{maxAmmo}";
+        if (Input.GetButton("Fire2"))
+            Reload();
+        ammoTxt.text = $"{ammo}/{magazine} | {maxAmmo}";
     }
+
+    private void Reload()
+    {
+        if (ammo == magazine) return;
+        ammo = (maxAmmo > magazine) ? ammo = magazine : ammo = maxAmmo;
+        maxAmmo -= ammo;
+        anim.SetTrigger("Reload");
+    }
+
     private void Shoot()
     {
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
