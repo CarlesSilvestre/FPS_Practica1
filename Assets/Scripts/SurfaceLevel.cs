@@ -8,7 +8,10 @@ public class SurfaceLevel : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSController>();
-        player.m_underWater = !player.m_underWater;
-        
+        if (!gameObject.name.Equals("DarkLevel"))
+        {
+            player.m_underWater = !player.m_underWater;
+        }
+
     }
 }
